@@ -1,0 +1,92 @@
+﻿#!/bin/sh
+
+set -e
+
+echo "========================================"
+echo " Sistema de Alocacao de Veiculos"
+echo "========================================"
+
+echo "Aguardando SQL Server..."
+
+attempt=1
+max_attempts=30
+
+while [ "$attempt" -le "$max_attempts" ]
+do
+    if dotnet AlocacaoVeiculosAssistencia.dll --db-ready
+    then
+        echo "SQL Server disponivel."
+        break
+    fi
+
+    echo "Tentativa $attempt de $max_attempts."
+    echo "Banco ainda indisponivel."
+
+    attempt=$((attempt + 1))
+
+    sleep 5
+done
+
+if [ "$attempt" -gt "$max_attempts" ]
+then
+    echo "ERRO: SQL Server nao ficou disponivel."
+    exit 1
+fi
+
+echo "========================================"
+echo "Aplicando migrations..."
+echo "========================================"
+
+if ! dotnet AlocacaoVeiculosAssistencia.dll --migrate
+then
+    echo "ERRO: falha ao aplicar migrations."
+    exit 1
+fi
+
+echo "Migrations aplicadas com sucesso."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+echo "========================================"
+echo "Iniciando API..."
+echo "========================================"
+
+exec dotnet AlocacaoVeiculosAssistencia.dll

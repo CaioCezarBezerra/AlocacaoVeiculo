@@ -2,7 +2,6 @@ using AlocacaoVeiculosAssistencia.Application.Interfaces.Repository;
 using AlocacaoVeiculosAssistencia.Application.Interfaces.Services;
 using AlocacaoVeiculosAssistencia.Application.Services;
 using AlocacaoVeiculosAssistencia.Data.Repository;
-
 using AlocacaoVeiculosAssistencia.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,11 +22,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 
+
 builder.Services.AddScoped<IEmpresaService, EmpresaAssistenciaService>();
 builder.Services.AddScoped<IPlanoService, PlanoAssistenciaService>();
 builder.Services.AddScoped<IVeiculoService, VeiculoService>();
 builder.Services.AddScoped<IVeiculoAssistenciaService, VeiculoAssistenciaService>();
 builder.Services.AddScoped<IGrupoVeiculoService, GrupoVeiculoService>();
+
+
 
 
 builder.Services.AddScoped<IEmpresasAssistenciaRepository, EmpresaAssistenciaRepository>();
@@ -37,12 +39,96 @@ builder.Services.AddScoped<IVeiculoAssistenciasRepository, VeiculoAssistenciaRep
 builder.Services.AddScoped<IGrupoVeiculosRepository, GruposVeiculosRepository>();
 
 
+
+
 builder.Services.AddControllers();
+
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+
+builder.Services.AddHealthChecks();
+
+
 var app = builder.Build();
+
+
+
+
+if (args.Contains("--db-ready"))
+{
+    using var scope = app.Services.CreateScope();
+
+    var context = scope.ServiceProvider
+        .GetRequiredService<AppDbContext>();
+
+    try
+    {
+        var conectado =
+            await context.Database.CanConnectAsync();
+
+        if (conectado)
+        {
+            Console.WriteLine("Banco de dados disponível.");
+            Environment.ExitCode = 0;
+        }
+        else
+        {
+            Console.Error.WriteLine(
+                "Banco de dados ainda não está disponível.");
+
+            Environment.ExitCode = 1;
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(
+            $"Erro ao conectar ao banco: {ex.Message}");
+
+        Environment.ExitCode = 1;
+    }
+
+    return;
+}
+
+
+
+
+if (args.Contains("--migrate"))
+{
+    using var scope = app.Services.CreateScope();
+
+    var context = scope.ServiceProvider
+        .GetRequiredService<AppDbContext>();
+
+    try
+    {
+        Console.WriteLine("Aplicando migrations...");
+
+        await context.Database.MigrateAsync();
+
+        Console.WriteLine(
+            "Migrations aplicadas com sucesso.");
+
+        Environment.ExitCode = 0;
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine(
+            $"Erro ao aplicar migrations: {ex.Message}");
+
+        Environment.ExitCode = 1;
+    }
+
+    return;
+}
+
+
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -50,10 +136,25 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+
+
+if (!app.Environment.IsEnvironment("Docker"))
+{
+    app.UseHttpsRedirection();
+}
+
 
 app.UseAuthorization();
 
+
+
+
+app.MapHealthChecks("/health");
+
+
+
+
 app.MapControllers();
+
 
 app.Run();

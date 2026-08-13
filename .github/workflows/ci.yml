@@ -1,0 +1,57 @@
+name: CI - Alocacao Veiculos
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+
+  backend:
+    name: Build Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restaurar dependencias
+        run: dotnet restore AlocacaoVeiculosAssistencia/AlocacaoVeiculosAssistencia/AlocacaoVeiculosAssistencia.csproj
+
+      - name: Compilar backend
+        run: dotnet build AlocacaoVeiculosAssistencia/AlocacaoVeiculosAssistencia/AlocacaoVeiculosAssistencia.csproj --configuration Release --no-restore
+
+
+  frontend:
+    name: Build Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo/package-lock.json
+
+      - name: Instalar dependencias
+        working-directory: front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
+        run: npm ci
+
+      - name: Compilar Angular
+        working-directory: front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
+        run: npm run build
