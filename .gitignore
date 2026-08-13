@@ -1,0 +1,21 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+# .NET
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Angular / Node
+node_modules/
+**/node_modules/
+.angular/
+**/.angular/
+dist/
+**/dist/
+
+# Environment / secrets
+.env
+.env.*
