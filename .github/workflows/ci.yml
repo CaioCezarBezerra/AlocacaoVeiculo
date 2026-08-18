@@ -46,12 +46,12 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-          cache-dependency-path: front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo/package-lock.json
+          cache-dependency-path: Front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo/package-lock.json
 
       - name: Instalar dependencias
-        working-directory: front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
+        working-directory: Front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
         run: npm ci
 
       - name: Compilar Angular
-        working-directory: front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
+        working-directory: Front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
         run: npm run build
