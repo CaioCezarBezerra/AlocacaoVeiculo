@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+
+}
+.acoes-header {
+  text-align: center;
+}
+
+.acoes-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-editar,
+.btn-excluir {
+  width: 36px;
+  height: 36px;
+  margin: 0 4px;
+}
+
+.btn-editar {
+  color: #f5c400;
+}
+
+.btn-excluir {
+  color: #e53935;
+}
+
+input{
+  width: 35%;
+}
+
+.mat-elevation-z8{
+  background-color: #69F0AE;
+}

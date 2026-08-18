@@ -1,0 +1,44 @@
+.painel-container {
+  flex-direction: column;
+  gap: 100px;
+  width: 100%;
+  margin: 10px;
+
+
+
+  align-items: flex-start;
+  box-sizing: border-box; 
+}
+
+mat-expansion-panel-header {
+  background-color: #69f0ae !important;
+}
+
+.mat-elevation-z8{
+  background-color: #69F0AE;
+}
+
+table {
+  width: 100%;
+}
+
+
+.btn-nova{
+    border-radius: 8px;
+    height: 45px;
+    margin-bottom: 1%;
+    margin-left: 80%;
+}
+
+.header-empresa {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 15px;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}

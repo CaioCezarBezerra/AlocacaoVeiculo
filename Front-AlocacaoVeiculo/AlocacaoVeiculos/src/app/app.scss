@@ -1,0 +1,11 @@
+.body {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: calc(100vh - 96px);
+}
+
+.sidenav-area {
+  border-right: 1px solid #020202;
+  padding: 1.5rem 0.75rem;
+  overflow: hidden;
+}

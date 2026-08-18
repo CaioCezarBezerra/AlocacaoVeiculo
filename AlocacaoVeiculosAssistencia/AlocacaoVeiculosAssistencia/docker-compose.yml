@@ -51,13 +51,17 @@ services:
 
   frontend:
     build:
-      context: ../../front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
-      dockerfile: Dockerfile
+      context: ../../Front-AlocacaoVeiculo/AlocacaoVeiculos
+      dockerfile: Dockerfile.dev
 
     container_name: alocacao-frontend
 
     ports:
-      - "4200:80"
+      - "4200:4200"
+
+    volumes:
+      - ../../Front-AlocacaoVeiculo/AlocacaoVeiculos:/app
+      - /app/node_modules
 
     depends_on:
       - api

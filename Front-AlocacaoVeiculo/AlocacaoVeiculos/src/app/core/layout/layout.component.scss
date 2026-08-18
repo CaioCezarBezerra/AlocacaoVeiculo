@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f1f0f4;
+  padding: 16px;
+}
+
+.app-shell {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 96px);
+}
+
+.sidenav-area {
+  border-right: 1px solid #e0e0e0;
+  padding: 1.5rem 0.75rem;
+  overflow: hidden;
+}
+
+.content-area {
+  padding: 1.5rem 1.75rem;
+}

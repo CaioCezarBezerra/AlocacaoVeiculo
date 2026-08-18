@@ -11,7 +11,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class VeiculosController : ControllerBase
-    {
+    {   
 
          private readonly IVeiculoService _veiculosService;
 
@@ -20,7 +20,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
              _veiculosService = veiculosService;
          }
 
-
+        [Route("ListarVeiculo")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VeiculosResponseDtos>>> GetTodos()
         {
@@ -56,6 +56,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
                 veiculoCriado);
         }
 
+            [Route("AtualizarVeiculos/{id}")]
             [HttpPut("{id:int}")]
             public async Task<IActionResult> Atualizar(int id, [FromBody] VeiculosUpdateDtos dto)
             {
@@ -70,9 +71,9 @@ namespace AlocacaoVeiculosAssistencia.Controllers
             }
             return Ok(veiculoAtualizado);
 
-        }
+        }   
 
-
+            [Route("DeletarVeiculos/{id}")]
             [HttpDelete("{id:int}")]
             public async Task<IActionResult> Excluir(int id)
             {

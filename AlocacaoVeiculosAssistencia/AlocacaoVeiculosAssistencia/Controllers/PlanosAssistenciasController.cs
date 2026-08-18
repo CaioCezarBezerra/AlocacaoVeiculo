@@ -16,7 +16,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
             _planoService = planoService;
         }
 
-
+        [Route("ListarPlano")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlanoResponseDtos>>> GetTodos()
         {
@@ -40,7 +40,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
 
             return Ok(plano);
         }
-
+        [Route("CriarPlanos")]
         [HttpPost]
         public async Task<ActionResult<PlanoResponseDtos>> Criar([FromBody]
             PlanoCreateDtos dto)
@@ -52,7 +52,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
             planos);
         }
 
-
+        [Route("AtualizarPlanos/{id}")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Atualizar(
             int id,
@@ -71,7 +71,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
             return Ok(planoAtualizado);
 
         }
-
+        [Route("DeletarPlanos/{id}")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Excluir(int id)
         {

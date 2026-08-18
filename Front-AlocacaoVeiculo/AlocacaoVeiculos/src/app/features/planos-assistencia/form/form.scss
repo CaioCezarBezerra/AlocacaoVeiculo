@@ -1,0 +1,119 @@
+.painel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  width: 100%;
+  margin-top: 5%;
+
+
+
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+
+
+
+.painel {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+
+
+.lista-planos {
+  flex: 2;
+
+  background: #ffffff;
+}
+
+
+
+
+.novo-plano {
+  flex: 1.7;
+
+  background: #ffffff;
+}
+
+
+
+
+mat-expansion-panel-header {
+  background-color: #69f0ae !important;
+}
+.mat-elevation-z8{
+  background-color: #69F0AE;
+}
+
+
+
+
+table {
+  width: 100%;
+
+  background: #ffffff;
+}
+
+
+
+
+.mat-mdc-header-row {
+  background: #f5f5f5;
+}
+
+.mat-mdc-row {
+  background: #ffffff;
+}
+
+
+
+
+.mat-mdc-header-cell {
+  color: #222;
+
+  font-weight: 500;
+}
+
+.mat-mdc-cell {
+  color: #333;
+}
+
+
+
+
+.form-plano {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  padding: 15px;
+}
+
+
+mat-form-field {
+  width: 50%;
+}
+
+
+.btn-cadastrar {
+  width: 100%;
+
+  padding: 12px;
+}
+.campos-empresa {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campos-empresa mat-form-field {
+  width: 100%;
+}
