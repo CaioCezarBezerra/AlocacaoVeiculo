@@ -33,25 +33,25 @@ jobs:
         run: dotnet build AlocacaoVeiculosAssistencia/AlocacaoVeiculosAssistencia/AlocacaoVeiculosAssistencia.csproj --configuration Release --no-restore
 
 
-  frontend:
-    name: Build Frontend
-    runs-on: ubuntu-latest
+ frontend:
+  name: Build Frontend
+  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v6
 
-      - name: Configurar Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: '22'
-          cache: npm
-          cache-dependency-path: Front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo/package-lock.json
+    - name: Configurar Node
+      uses: actions/setup-node@v6
+      with:
+        node-version: '22'
+        cache: npm
+        cache-dependency-path: Front-AlocacaoVeiculo/AlocacaoVeiculos/package-lock.json
 
-      - name: Instalar dependencias
-        working-directory: Front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
-        run: npm ci
+    - name: Instalar dependencias
+      working-directory: Front-AlocacaoVeiculo/AlocacaoVeiculos
+      run: npm ci
 
-      - name: Compilar Angular
-        working-directory: Front-AlocacaoVeiculoAssistencia/AlocacaoVeiculo
-        run: npm run build
+    - name: Compilar Angular
+      working-directory: Front-AlocacaoVeiculo/AlocacaoVeiculos
+      run: npm run build
