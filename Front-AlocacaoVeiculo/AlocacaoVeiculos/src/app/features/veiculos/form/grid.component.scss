@@ -1,49 +1,55 @@
-table {
+.painel-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+
   width: 100%;
+  box-sizing: border-box;
 
-}
-.acoes-header {
-  text-align: center;
-}
+  align-items: stretch;
 
-.acoes-cell {
-  text-align: center;
-  white-space: nowrap;
+  padding: 0 24px;
 }
 
-.btn-editar,
-.btn-excluir {
-  width: 36px;
-  height: 36px;
-  margin: 0 4px;
-}
-
-.btn-editar {
-  color: #f5c400;
-}
-
-.btn-excluir {
-  color: #e53935;
-}
-
-input{
-  width: 35%;
-}
-
-.mat-elevation-z8{
-  background-color: #69F0AE;
+.painel {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 
 
-mat-expansion-panel-header {
-  background-color: #69f0ae !important;
-}
-.mat-elevation-z8{
-  background-color: #69F0AE;
+@media (max-width: 1110px) {
+
+  .painel-container {
+    gap: 24px;
+    padding: 0 16px;
+  }
+
 }
 
 
-.input{
-    margin-top: 10px;
+
+@media (max-width: 768px) {
+
+  .painel-container {
+    gap: 18px;
+    padding: 0 12px;
+  }
+
+  .painel {
+    width: 100%;
+  }
+
+}
+
+
+
+@media (max-width: 480px) {
+
+  .painel-container {
+    gap: 14px;
+    padding: 0 8px;
+  }
+
 }
