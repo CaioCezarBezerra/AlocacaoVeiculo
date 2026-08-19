@@ -45,7 +45,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
 
             return Ok(veiculo);
         }
-
+        [Route("CriaVeiculo")]
         [HttpPost]
         public async Task<ActionResult<VeiculosResponseDtos>> Criar(int id, [FromBody] VeiculosCreateDto dto)
         {

@@ -3,14 +3,14 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Veiculos {
-    id: number;
-    modelo: string;
-    placa: string;
-    grupoId: number;
-    grupoNome: string;
+  id: number;
+  modelo: string;
+  placa: string;
+  grupoId: number;
+  grupoNome: string;
 }
 
-export interface VeiculoCriar {
+export interface CriarVeiculos {
   modelo: string;
   placa: string;
   grupoId: number;
@@ -30,30 +30,19 @@ export class VeiculoService {
   private readonly http = inject(HttpClient);
 
   private readonly apiUrl = 'http://localhost:7005/api/Veiculos';
-
+  /*----------------------------------LISTAR----------------------------------------------------------*/
   listar(): Observable<Veiculos[]> {
-    console.log("passei aqui")
-    return this.http.get<Veiculos[]>(
-      `${this.apiUrl}/ListarVeiculo`
-
-    );
-   
+    return this.http.get<Veiculos[]>(`${this.apiUrl}/ListarVeiculo`);
   }
-
-  atualizar(
-    id: number,
-    veiculo: AtualizarVeiculos
-  ): Observable<AtualizarVeiculos> {
-
-    return this.http.put<AtualizarVeiculos>(
-      `${this.apiUrl}/AtualizarVeiculos/${id}`,
-      veiculo
-    );
+  /*----------------------------------ATUALIZAR----------------------------------------------------------*/
+  atualizar(id: number, veiculo: AtualizarVeiculos): Observable<AtualizarVeiculos> {
+    return this.http.put<AtualizarVeiculos>(`${this.apiUrl}/AtualizarVeiculos/${id}`, veiculo);
   }
-
+  /*----------------------------------DELETAR----------------------------------------------------------*/
   deletar(id: number): Observable<void> {
-    return this.http.delete<void>(
-      `${this.apiUrl}/DeletarVeiculos/${id}`
-    );
+    return this.http.delete<void>(`${this.apiUrl}/DeletarVeiculos/${id}`);
+  }
+  criarVeiculos(veiculo: CriarVeiculos): Observable<CriarVeiculos>{
+    return this.http.post<Veiculos>(`${this.apiUrl}/CriaVeiculo`, veiculo)
   }
 }

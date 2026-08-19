@@ -9,5 +9,8 @@ namespace AlocacaoVeiculosAssistencia.Application.Interfaces.Repository
         Task<VeiculosAssistencia> CriarVeiculoAssistenciaAsync(VeiculosAssistencia veiculo);
         Task<VeiculosAssistencia?> AtualizarVeiculoAssistenciaAsync(int id, VeiculosAssistencia veiculo);
         Task<bool> DeletarVeiculoAssistenciaAsync(int id);
+        Task<bool> ExisteVinculoAsync(
+    int veiculoId,
+    int planoId);
     }
 }

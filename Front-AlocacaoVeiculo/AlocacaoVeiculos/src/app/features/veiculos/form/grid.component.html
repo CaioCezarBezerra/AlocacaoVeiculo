@@ -1,7 +1,10 @@
+
+<div>
+
 <mat-expansion-panel
   hideToggle
   [expanded]="true"
-  class="mat-elevation-z8">
+  class="painel">
 
   <mat-expansion-panel-header>
 
@@ -158,3 +161,192 @@
   </div>
 
 </mat-expansion-panel>
+
+
+  <mat-expansion-panel hideToggle [expanded]="true" class="painel">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Cadastrar novo veiculo
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+
+    <div class="form-modelo">
+
+      <mat-stepper [linear]="true" #stepper>
+
+
+        <mat-step #stepper [stepControl]="modeloFormGroup">
+
+          <form [formGroup]="modeloFormGroup" class="input">
+
+            <ng-template matStepLabel>
+              Modelo
+            </ng-template>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Nome do modelo
+              </mat-label>
+
+              <input matInput formControlName="modelo" placeholder="Ex: modelo honda">
+
+            </mat-form-field>
+
+
+            <div class="acoes-step">
+
+              <button class="btn" mat-raised-button color="primary" matStepperNext>
+
+                Próximo
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </mat-step>
+
+        <mat-step [stepControl]="placaFormGroup">
+
+          <form [formGroup]="placaFormGroup" class="input">
+
+            <ng-template matStepLabel>
+              Placa
+            </ng-template>
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                placa
+              </mat-label>
+
+              <input matInput formControlName="placa" placeholder="Placa ">
+
+            </mat-form-field>
+
+
+            <div class="acoes-step">
+
+              <button mat-button matStepperPrevious>
+
+                Voltar
+
+              </button>
+
+              <button mat-raised-button color="primary" matStepperNext>
+
+                Próximo
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </mat-step>
+
+        <mat-step [stepControl]="grupoFormGroup">
+
+          <form [formGroup]="grupoFormGroup" class="input">
+
+            <ng-template matStepLabel>
+              Grupo
+            </ng-template>
+
+            <mat-form-field appearance="outline">
+
+    <mat-label>Grupo do veículo</mat-label>
+
+    <mat-select formControlName="grupoId">
+
+      @for (grupo of grupos; track grupo.id) {
+
+        <mat-option [value]="grupo.id">
+          {{ grupo.nome }}
+        </mat-option>
+
+      }
+
+    </mat-select>
+
+  </mat-form-field>
+
+            <div class="acoes-step">
+
+              <button mat-button matStepperPrevious>
+
+                Voltar
+
+              </button>
+
+              <button mat-raised-button color="primary" matStepperNext>
+
+                Revisar
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </mat-step>
+
+
+        <mat-step>
+
+          <ng-template matStepLabel>
+            Confirmar
+          </ng-template>
+
+          <div class="resumo">
+
+            <h3>Novo veiculo</h3>
+
+             <p>
+              <strong>Modelo:</strong>
+              {{ modeloFormGroup.value.modelo }}
+            </p>
+
+             <p>
+              <strong>Placa:</strong>
+              {{ placaFormGroup.value.placa }}
+            </p>
+
+            <p>
+              <strong>Grupo:</strong>
+              {{ grupoFormGroup.value.grupoId }}
+            </p>
+
+          </div>
+
+
+          <div class="acoes-step">
+
+            <button mat-button matStepperPrevious>
+
+              Voltar
+
+            </button>
+
+            <button mat-raised-button color="primary" (click)="cadastrarVeiculo()">
+
+              Cadastrar plano
+
+            </button>
+
+          </div>
+
+        </mat-step>
+
+
+      </mat-stepper>
+
+    </div>
+
+  </mat-expansion-panel>
+
+</div>

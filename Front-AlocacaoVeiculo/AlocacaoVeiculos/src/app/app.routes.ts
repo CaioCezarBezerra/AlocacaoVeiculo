@@ -14,7 +14,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'veiculos', pathMatch: 'full' },
       {
         path: 'grupos',
-        loadComponent: () => import('./features/grupos-veiculos/lista/lista').then(m => m.Lista)
+        loadComponent: () => import('./features/grupos-veiculos/lista/grupos-veiculos.component').then(m => m.GruposVeiculos)
       },
       {
         path: 'veiculos',
@@ -30,7 +30,7 @@ export const routes: Routes = [
       },
       {
         path: 'vinculos',
-        loadComponent: () => import('./features/vinculos/lista/lista').then(m => m.Lista)
+        loadComponent: () => import('./features/vinculos/lista/vinculo-veiculos.component').then(m => m.VinculoVeiculosComponent)
       },
       
     ]

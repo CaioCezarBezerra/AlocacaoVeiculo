@@ -1,9 +1,6 @@
 <div class="painel-container">
 
-  <mat-expansion-panel
-    hideToggle
-    [expanded]="true"
-    class="painel lista-planos mat-elevation-z8">
+  <mat-expansion-panel hideToggle [expanded]="true" class="painel">
 
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -11,9 +8,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <table
-      mat-table
-      [dataSource]="dataSource">
+    <table mat-table [dataSource]="dataSource">
 
       <ng-container matColumnDef="plano">
 
@@ -25,14 +20,11 @@
 
           @if (editando === element) {
 
-            <input
-              matInput
-              [(ngModel)]="element.plano"
-            />
+          <input matInput [(ngModel)]="element.plano" />
 
           } @else {
 
-            {{ element.plano }}
+          {{ element.plano }}
 
           }
 
@@ -45,18 +37,15 @@
           Valor da cobertura
         </th>
 
-       <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element">
 
           @if (editando === element) {
 
-            <input
-              matInput
-              [(ngModel)]="element.valorCobertura"
-            />
+          <input matInput [(ngModel)]="element.valorCobertura" />
 
           } @else {
 
-            {{ element.valorCobertura }}
+          {{ element.valorCobertura }}
 
           }
 
@@ -73,14 +62,11 @@
 
           @if (editando === element) {
 
-            <input
-              matInput
-              [(ngModel)]="element.descricao"
-            />
+          <input matInput [(ngModel)]="element.descricao" />
 
           } @else {
 
-            {{ element.descricao }}
+          {{ element.descricao }}
 
           }
 
@@ -96,14 +82,11 @@
 
           @if (editando === element) {
 
-            <input
-              matInput
-              [(ngModel)]="element.empresaId"
-            />
+          <input matInput [(ngModel)]="element.empresaId" />
 
           } @else {
 
-            {{ element.empresaId }}
+          {{ element.empresaId }}
 
           }
 
@@ -120,38 +103,26 @@
 
           @if (editando === element) {
 
-            <button
-              mat-icon-button
-              class="btn-salvar"
-              (click)="salvar(element)"
-              matTooltip="Salvar">
+          <button mat-icon-button class="btn-salvar" (click)="salvar(element)" matTooltip="Salvar">
 
-              <mat-icon>save</mat-icon>
+            <mat-icon>save</mat-icon>
 
-            </button>
+          </button>
 
           } @else {
 
-            <button
-              mat-icon-button
-              class="btn-editar"
-              (click)="editar(element)"
-              matTooltip="Editar">
+          <button mat-icon-button class="btn-editar" (click)="editar(element)" matTooltip="Editar">
 
-              <mat-icon>edit</mat-icon>
+            <mat-icon>edit</mat-icon>
 
-            </button>
+          </button>
 
 
-            <button
-              mat-icon-button
-              class="btn-excluir"
-              (click)="excluir(element)"
-              matTooltip="Excluir">
+          <button mat-icon-button class="btn-excluir" (click)="excluir(element)" matTooltip="Excluir">
 
-              <mat-icon>delete</mat-icon>
+            <mat-icon>delete</mat-icon>
 
-            </button>
+          </button>
 
           }
 
@@ -160,15 +131,11 @@
       </ng-container>
 
 
-     <tr
-    mat-header-row
-    *matHeaderRowDef="displayedColumns">
-  </tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns">
+      </tr>
 
-  <tr
-    mat-row
-    *matRowDef="let row; columns: displayedColumns">
-  </tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns">
+      </tr>
 
     </table>
 
@@ -176,10 +143,7 @@
 
 
 
-  <mat-expansion-panel
-    hideToggle
-    [expanded]="true"
-    class="painel novo-plano mat-elevation-z8">
+  <mat-expansion-panel hideToggle [expanded]="true" class="painel">
 
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -190,14 +154,12 @@
 
     <div class="form-plano">
 
-      <mat-stepper
-        [linear]="true"
-        #stepper>
+      <mat-stepper [linear]="true" #stepper>
 
 
-        <mat-step [stepControl]="planoFormGroup">
+        <mat-step #stepper [stepControl]="planoFormGroup">
 
-          <form [formGroup]="planoFormGroup">
+          <form [formGroup]="planoFormGroup" class="input">
 
             <ng-template matStepLabel>
               Plano
@@ -209,20 +171,14 @@
                 Nome do plano
               </mat-label>
 
-              <input
-                matInput
-                formControlName="planos"
-                placeholder="Ex: Planos Premium">
+              <input matInput formControlName="planos" placeholder="Ex: Planos Premium">
 
             </mat-form-field>
 
 
             <div class="acoes-step">
 
-              <button
-                mat-raised-button
-                color="primary"
-                matStepperNext>
+              <button class="btn" mat-raised-button color="primary" matStepperNext>
 
                 Próximo
 
@@ -237,47 +193,42 @@
 
         <mat-step [stepControl]="empresaFormGroup">
 
-  <form [formGroup]="empresaFormGroup">
+          <form [formGroup]="empresaFormGroup" class="input">
 
-    <ng-template matStepLabel>
-      Empresa
-    </ng-template>
+            <ng-template matStepLabel>
+              Empresa
+            </ng-template>
 
-    <div class="campos-empresa">
+            <div class="campos-empresa">
 
-      <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline">
 
-  <mat-label>Empresa</mat-label>
+                <mat-label>Empresa</mat-label>
 
-  <mat-select formControlName="empresa">
+                <mat-select formControlName="id">
 
-    @for (empresa of empresas; track empresa.id) {
+                  @for (empresa of empresas; track empresa.id) {
 
-      <mat-option [value]="empresa.id">
-        {{ empresa.nome}}
-      </mat-option>
+                  <mat-option [value]="empresa.id">
+                    {{ empresa.nome }}
+                  </mat-option>
 
-    }
+                  }
 
-  </mat-select>
+                </mat-select>
 
-</mat-form-field>
-    </div>
+              </mat-form-field>
+            </div>
 
-    <div class="acoes-step">
+            <div class="acoes-step">
 
-              <button
-                mat-button
-                matStepperPrevious>
+              <button mat-button matStepperPrevious>
 
                 Voltar
 
               </button>
 
-              <button
-                mat-raised-button
-                color="primary"
-                matStepperNext>
+              <button mat-raised-button color="primary" matStepperNext>
 
                 Próximo
 
@@ -285,13 +236,13 @@
 
             </div>
 
-  </form>
+          </form>
 
-</mat-step>
+        </mat-step>
 
         <mat-step [stepControl]="descricaoFormGroup">
 
-          <form [formGroup]="descricaoFormGroup">
+          <form [formGroup]="descricaoFormGroup" class="input">
 
             <ng-template matStepLabel>
               Descrição
@@ -303,28 +254,20 @@
                 Descrição
               </mat-label>
 
-              <input
-                matInput
-                formControlName="descricao"
-                placeholder="Descrição">
+              <input matInput formControlName="descricao" placeholder="Descrição">
 
             </mat-form-field>
 
 
             <div class="acoes-step">
 
-              <button
-                mat-button
-                matStepperPrevious>
+              <button mat-button matStepperPrevious>
 
                 Voltar
 
               </button>
 
-              <button
-                mat-raised-button
-                color="primary"
-                matStepperNext>
+              <button mat-raised-button color="primary" matStepperNext>
 
                 Próximo
 
@@ -338,10 +281,11 @@
 
         <mat-step [stepControl]="valorCoberturaFormGroup">
 
-          <form [formGroup]="valorCoberturaFormGroup">
+          <form [formGroup]="valorCoberturaFormGroup" class="input">
 
             <ng-template matStepLabel>
-              valores            </ng-template>
+              valores
+            </ng-template>
 
             <mat-form-field appearance="outline">
 
@@ -349,29 +293,20 @@
                 Valor da cobertura
               </mat-label>
 
-              <input
-                matInput
-                type="number"
-                formControlName="valorCobertura"
-                placeholder="Ex: 50000">
+              <input matInput type="number" formControlName="valorCobertura" placeholder="Ex: 50000">
 
             </mat-form-field>
 
 
             <div class="acoes-step">
 
-              <button
-                mat-button
-                matStepperPrevious>
+              <button mat-button matStepperPrevious>
 
                 Voltar
 
               </button>
 
-              <button
-                mat-raised-button
-                color="primary"
-                matStepperNext>
+              <button mat-raised-button color="primary" matStepperNext>
 
                 Revisar
 
@@ -401,14 +336,13 @@
 
             <p>
               <strong>Empresa:</strong>
-              {{ empresaFormGroup.value.empresaNome }}
+              {{ empresaSelecionada?.nome }}
             </p>
 
             <p>
-              <strong>Empresa:</strong>
-              {{ empresaFormGroup.value.empresaId }}
+              <strong>ID:</strong>
+              {{ empresaSelecionada?.id }}
             </p>
-
             <p>
               <strong>valores:</strong>
               R$ {{ valorCoberturaFormGroup.value.valorCobertura }}
@@ -424,18 +358,13 @@
 
           <div class="acoes-step">
 
-            <button
-              mat-button
-              matStepperPrevious>
+            <button mat-button matStepperPrevious>
 
               Voltar
 
             </button>
 
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="cadastrarPlano()">
+            <button mat-raised-button color="primary" (click)="cadastrarPlano()">
 
               Cadastrar plano
 

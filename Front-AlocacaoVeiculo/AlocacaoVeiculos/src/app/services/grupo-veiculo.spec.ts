@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GrupoVeiculo } from './grupo-veiculo';
+import { GrupoVeiculo } from './grupo-veiculo.service';
 
 describe('GrupoVeiculo', () => {
   let service: GrupoVeiculo;

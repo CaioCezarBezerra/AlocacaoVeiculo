@@ -90,5 +90,15 @@ namespace AlocacaoVeiculosAssistencia.Data.Repository
 
             return true;
         }
+
+        public async Task<bool> ExisteVinculoAsync(
+    int veiculoId,
+    int planoId)
+        {
+            return await _context.VeiculosAssistencia
+                .AnyAsync(x =>
+                    x.VeiculoId == veiculoId &&
+                    x.PlanoId == planoId);
+        }
     }
 }

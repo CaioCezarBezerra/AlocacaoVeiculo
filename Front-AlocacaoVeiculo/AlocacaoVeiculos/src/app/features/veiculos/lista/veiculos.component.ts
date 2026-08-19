@@ -25,7 +25,7 @@ export class VeiculosComponent {
 
   this.carregarVeiculos();
   }
-
+/*----------------------------------LISTAR----------------------------------------------------------*/
   carregarVeiculos(): void {
 
   console.log('2 - CHAMANDO API');

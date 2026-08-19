@@ -18,7 +18,7 @@ public class GruposVeiculosController : ControllerBase
         _grupoVeiculoService = grupoVeiculoService;
     }
 
-
+    [Route("ListarGruposVeiculos")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<GrupoVeiculosResponseDtos>>> GetTodos()
     {
@@ -42,7 +42,7 @@ public class GruposVeiculosController : ControllerBase
 
         return Ok(grupo);
     }
-              
+    [Route("CriarGruposVeiculos")]      
     [HttpPost]
     public async Task<ActionResult<GrupoVeiculosResponseDtos>> Criar(
         GrupoVeiculosCreateDtos dto)
@@ -54,7 +54,7 @@ public class GruposVeiculosController : ControllerBase
         grupoCriado);
     }
 
-   
+    [Route("AtualizarGrupoVeiculos/{id}")]
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Atualizar(int id, [FromBody] GruposVeiculosUpdateDtos dto)
     {
@@ -70,7 +70,7 @@ public class GruposVeiculosController : ControllerBase
 
         return Ok(grupoAtualizado);
     }
-
+    [Route("DeletarGrupoVeiculos/{id}")]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Excluir(int id)
     {

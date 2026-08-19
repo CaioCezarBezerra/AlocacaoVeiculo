@@ -1,4 +1,4 @@
-﻿namespace AlocacaoVeiculosAssistencia.Application.DTOs.Empresa
+﻿    namespace AlocacaoVeiculosAssistencia.Application.DTOs.Empresa
 {
     public class EmpresaAssistenciaResponseDtos
     {

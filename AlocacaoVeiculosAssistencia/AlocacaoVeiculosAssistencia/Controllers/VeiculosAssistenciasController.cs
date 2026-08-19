@@ -22,7 +22,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
             _veiculoAssistenciaService = veiculoAssistenciaService;
         }
 
-
+        [Route("ListarVinculoVeiculo")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VinculoVeiculoPlanoResponseDto>>> GetTodos()
         {
@@ -46,9 +46,11 @@ namespace AlocacaoVeiculosAssistencia.Controllers
 
             return Ok(veiculoAssistencia);
         }
+
+        [Route("CriarVinculos")]
         [HttpPost]
         public async Task<ActionResult<VinculoVeiculoPlanoResponseDto>> Criar(
-            [FromBody] VinculoVeiculoPlanoCreateDto dto)
+     [FromBody] VinculoVeiculoPlanoCreateDto dto)
         {
             var veiculoAssistencia =
                 await _veiculoAssistenciaService
@@ -59,7 +61,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
                 new { id = veiculoAssistencia.Id },
                 veiculoAssistencia);
         }
-
+        [Route("AtualizarVinculoVeiculo/{id}")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Atualizar(
             int id,
@@ -77,7 +79,7 @@ namespace AlocacaoVeiculosAssistencia.Controllers
 
         }
 
-
+        [Route("DeletarVinculoVeiculo/{id}")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Excluir(int id)
         {

@@ -1,8 +1,9 @@
 .painel-container {
+  display: flex;
   flex-direction: column;
   gap: 100px;
   width: 100%;
-  margin: 10px;
+  margin-top: 1%;
 
 
 
@@ -13,22 +14,15 @@
 mat-expansion-panel-header {
   background-color: #69f0ae !important;
 }
-
-.mat-elevation-z8{
+.painel lista-planos mat-elevation-z8{
   background-color: #69F0AE;
 }
+
 
 table {
   width: 100%;
 }
 
-
-.btn-nova{
-    border-radius: 8px;
-    height: 45px;
-    margin-bottom: 1%;
-    margin-left: 80%;
-}
 
 .header-empresa {
   width: 100%;
@@ -41,4 +35,85 @@ table {
 .mat-mdc-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+
+.novo-plano {
+  flex: 1.7;
+
+  background: #ffffff;
+}
+
+
+.painel {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.form-plano {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  padding: 15px;
+}
+
+.btn-editar,
+.btn-excluir {
+  width: 36px;
+  height: 36px;
+  margin: 0 4px;
+  border-color: #ffffff;
+  border: none;
+}
+
+.btn-editar {
+  color: #f5c400;
+}
+
+.btn-excluir {
+  color: #e53935;
+}
+
+
+.filtro{
+    margin-top: 20px;
+
+}
+
+.input{
+    margin-top: 10px;
+}
+
+
+
+.btn{
+    color: #fffcfc;
+    width: 105px;
+    height: 35px;
+    border-radius: 25px;
+    border: rgb(250, 247, 247);
+    background-color: #005CBB;
+
+
+    cursor: pointer;
+}
+
+btn:hover{
+    color:#ffffff
+    
+}
+
+.btn-1{
+     border-radius: 25px;
+     height: 35px;
+      border: rgb(250, 247, 247);
+      color: #fffcfc;
+        background-color: #005CBB;
 }

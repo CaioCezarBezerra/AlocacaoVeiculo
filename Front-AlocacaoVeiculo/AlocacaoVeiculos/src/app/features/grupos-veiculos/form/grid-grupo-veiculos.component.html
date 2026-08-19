@@ -1,0 +1,264 @@
+<div class="painel-container">
+
+    <mat-expansion-panel hideToggle [expanded]="true" class="painel">
+
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Grupos De Veiculos cadastrados
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="id">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    N
+                </th>
+
+                <td mat-cell *matCellDef="let element">
+
+                    @if (editando === element) {
+
+                    <input matInput [(ngModel)]="element.id" />
+
+                    } @else {
+
+                    {{ element.id }}
+
+                    }
+
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nome">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    nome
+                </th>
+
+                <td mat-cell *matCellDef="let element">
+
+                    @if (editando === element) {
+
+                    <input matInput [(ngModel)]="element.nome" />
+
+                    } @else {
+
+                    {{ element.nome }}
+
+                    }
+
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="descricao">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Descrição
+                </th>
+
+                <td mat-cell *matCellDef="let element">
+
+                    @if (editando === element) {
+
+                    <input matInput [(ngModel)]="element.descricao" />
+
+                    } @else {
+
+                    {{ element.descricao }}
+
+                    }
+
+                </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="acoes">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Ações
+                </th>
+
+                <td mat-cell *matCellDef="let element">
+
+                    @if (editando === element) {
+
+                    <button mat-icon-button class="btn-salvar" (click)="salvar(element)" matTooltip="Salvar">
+
+                        <mat-icon>save</mat-icon>
+
+                    </button>
+
+                    } @else {
+
+                    <button mat-icon-button class="btn-editar" (click)="editar(element)" matTooltip="Editar">
+
+                        <mat-icon>edit</mat-icon>
+
+                    </button>
+
+
+                    <button mat-icon-button class="btn-excluir" (click)="excluir(element)" matTooltip="Excluir">
+
+                        <mat-icon>delete</mat-icon>
+
+                    </button>
+
+                    }
+
+                </td>
+
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns">
+            </tr>
+
+            <tr mat-row *matRowDef="let row; columns: displayedColumns">
+            </tr>
+
+        </table>
+
+    </mat-expansion-panel>
+
+
+
+    <mat-expansion-panel hideToggle [expanded]="true" class="painel">
+
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Cadastrar novo grupo
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+
+        <div class="form-grupo">
+
+            <mat-stepper [linear]="true" #stepper>
+
+
+                <mat-step #stepper [stepControl]="nomeFormGroup">
+
+                    <form [formGroup]="nomeFormGroup" class="input">
+
+                        <ng-template matStepLabel>
+                            Grupo Veiculos
+                        </ng-template>
+
+                        <mat-form-field appearance="outline">
+
+                            <mat-label>
+                                Nome do grupo
+                            </mat-label>
+
+                            <input #nomeInput matInput formControlName="nome" placeholder="Ex: Grupo Veiculos">
+
+                        </mat-form-field>
+
+
+                        <div class="acoes-step">
+
+                            <button class="btn" mat-raised-button color="primary" matStepperNext>
+
+                                Próximo
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </mat-step>
+
+
+                <mat-step [stepControl]="descricaoFormGroup">
+
+                    <form [formGroup]="descricaoFormGroup" class="input">
+
+                        <ng-template matStepLabel>
+                            Descrição
+                        </ng-template>
+
+                        <mat-form-field appearance="outline">
+
+                            <mat-label>
+                                Descrição
+                            </mat-label>
+
+                            <input matInput formControlName="descricao" placeholder="Descrição">
+
+                        </mat-form-field>
+
+
+                        <div class="acoes-step">
+
+                            <button mat-button matStepperPrevious>
+
+                                Voltar
+
+                            </button>
+
+                            <button mat-raised-button color="primary" matStepperNext>
+
+                                Próximo
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </mat-step>
+
+
+                <mat-step>
+
+                    <ng-template matStepLabel>
+                        Confirmar
+                    </ng-template>
+
+                    <div class="resumo">
+
+                        <h3>Novo grupo</h3>
+
+                        <p>
+                            <strong>Grupos:</strong>
+                            {{ nomeFormGroup.value.nome }}
+                        </p>
+
+
+                        <p>
+                            <strong>Descrição:</strong>
+                            {{ descricaoFormGroup.value.descricao }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="acoes-step">
+
+                        <button mat-button matStepperPrevious>
+
+                            Voltar
+
+                        </button>
+
+                        <button mat-raised-button color="primary" (click)="cadastrarGrupo()">
+
+                            Cadastrar plano
+
+                        </button>
+
+                    </div>
+
+                </mat-step>
+
+
+            </mat-stepper>
+
+        </div>
+
+    </mat-expansion-panel>
+
+</div>

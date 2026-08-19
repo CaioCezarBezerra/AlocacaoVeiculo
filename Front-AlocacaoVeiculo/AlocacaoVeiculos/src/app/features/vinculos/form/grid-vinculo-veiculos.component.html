@@ -1,0 +1,317 @@
+<div class="painel-container">
+
+
+  <mat-expansion-panel hideToggle [expanded]="true" class="painel">
+
+    <mat-expansion-panel-header>
+
+      <mat-panel-title>
+        Planos e Veículos cadastrados
+      </mat-panel-title>
+
+    </mat-expansion-panel-header>
+
+
+    <table mat-table [dataSource]="dataSource">
+
+
+
+      <ng-container matColumnDef="plano">
+
+        <th mat-header-cell *matHeaderCellDef>
+          Plano
+        </th>
+
+        <td mat-cell *matCellDef="let element">
+
+          @if (editando === element) {
+
+          <input matInput [(ngModel)]="element.plano" />
+
+          } @else {
+
+          {{ element.plano }}
+
+          }
+
+        </td>
+
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="veiculo">
+
+        <th mat-header-cell *matHeaderCellDef>
+          Veículo
+        </th>
+
+        <td mat-cell *matCellDef="let element">
+
+          @if (editando === element) {
+
+          <input matInput [(ngModel)]="element.veiculo" />
+
+          } @else {
+
+          {{ element.veiculo }}
+
+          }
+
+        </td>
+
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="acoes">
+
+        <th mat-header-cell *matHeaderCellDef>
+          Ações
+        </th>
+
+        <td mat-cell *matCellDef="let element">
+
+
+          @if (editando === element) {
+
+          <button mat-icon-button class="btn-salvar" (click)="salvar(element)" matTooltip="Salvar">
+
+            <mat-icon>
+              save
+            </mat-icon>
+
+          </button>
+
+          } @else {
+
+          <button mat-icon-button class="btn-editar" (click)="editar(element)" matTooltip="Editar">
+
+            <mat-icon>
+              edit
+            </mat-icon>
+
+          </button>
+
+
+          <button mat-icon-button class="btn-excluir" (click)="excluir(element)" matTooltip="Excluir">
+
+            <mat-icon>
+              delete
+            </mat-icon>
+
+          </button>
+
+          }
+
+        </td>
+
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns">
+      </tr>
+
+
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns">
+      </tr>
+
+    </table>
+
+  </mat-expansion-panel>
+
+
+  <mat-expansion-panel hideToggle [expanded]="true" class="painel">
+
+    <mat-expansion-panel-header>
+
+      <mat-panel-title>
+        Cadastrar novo vínculo
+      </mat-panel-title>
+
+    </mat-expansion-panel-header>
+
+
+    <div class="form-plano">
+
+
+      <mat-stepper #stepper [linear]="true">
+
+
+
+        <mat-step [stepControl]="planoFormGroup">
+
+          <form #stepper [formGroup]="planoFormGroup">
+
+
+            <ng-template matStepLabel>
+              Plano
+            </ng-template>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Plano
+              </mat-label>
+
+
+              <mat-select formControlName="planoId">
+
+                @for (plano of planos; track plano.id) {
+
+                <mat-option [value]="plano.id">
+                  {{ plano.plano }}
+                </mat-option>
+
+                }
+
+              </mat-select>
+
+            </mat-form-field>
+
+
+            <div class="acoes-step">
+
+              <button type="button" class="btn" mat-raised-button color="primary" matStepperNext>
+
+                Próximo
+
+              </button>
+
+            </div>
+
+
+          </form>
+
+        </mat-step>
+
+        <mat-step [stepControl]="modeloFormGroup">
+
+          <form [formGroup]="modeloFormGroup" class="input">
+
+
+            <ng-template matStepLabel>
+              Veículo
+            </ng-template>
+
+
+            <mat-form-field appearance="outline">
+
+              <mat-label>
+                Veículo
+              </mat-label>
+
+
+              <mat-select formControlName="veiculoId">
+
+                @for (veiculo of veiculos; track veiculo.id) {
+
+                <mat-option [value]="veiculo.id">
+                  {{ veiculo.modelo }}
+                </mat-option>
+
+                }
+
+              </mat-select>
+            </mat-form-field>
+
+
+            <div class="acoes-step">
+
+
+              <button type="button" mat-button matStepperPrevious>
+
+                Voltar
+
+              </button>
+
+
+              <button type="button" class="btn" mat-raised-button color="primary" matStepperNext>
+
+                Revisar
+
+              </button>
+
+
+            </div>
+
+
+          </form>
+
+        </mat-step>
+
+        <mat-step>
+
+
+          <ng-template matStepLabel>
+            Confirmar
+          </ng-template>
+
+
+          <div class="resumo">
+
+
+            <h3>
+              Novo vínculo
+            </h3>
+
+
+            <p>
+
+              <strong>
+                Plano:
+              </strong>
+
+              {{ planoSelecionado?.plano }}
+
+            </p>
+
+
+            <p>
+
+              <strong>
+                Veículo:
+              </strong>
+
+              {{ veiculoSelecionado?.modelo }}
+
+            </p>
+
+
+          </div>
+
+
+          <div class="acoes-step">
+
+
+            <button type="button" mat-button matStepperPrevious>
+
+              Voltar
+
+            </button>
+
+
+            <button type="button" mat-raised-button color="primary" (click)="cadastrarVinculo()">
+
+              Cadastrar vínculo
+
+            </button>
+
+
+          </div>
+
+
+        </mat-step>
+
+
+      </mat-stepper>
+
+
+    </div>
+
+  </mat-expansion-panel>
+
+</div>

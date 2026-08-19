@@ -19,7 +19,7 @@ public class EmpresasAssistenciaController : ControllerBase
         _empresaService = empresaService;
     }
 
-
+    [Route("ListarEmpresa")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<EmpresaAssistenciaResponseDtos>>> GetTodos()
     {
@@ -45,6 +45,7 @@ public class EmpresasAssistenciaController : ControllerBase
         return Ok(empresas);
     }
 
+    [Route("CriarEmpresa")]
     [HttpPost]
     public async Task<ActionResult<EmpresaAssistenciaResponseDtos>> Criar([FromBody]
         EmpresaAssistenciaCreateDtos dto)
@@ -56,7 +57,7 @@ public class EmpresasAssistenciaController : ControllerBase
         empresas);
     }
 
-
+    [Route("AtualizarEmpresa/{id}")]
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Atualizar(
         int id, [FromBody] EmpresaAssistenciaUpdateDtos dto)
@@ -73,7 +74,7 @@ public class EmpresasAssistenciaController : ControllerBase
         return Ok(empresaAtualizada);
     }
 
-
+    [Route("DeletarEmpresa/{id}")]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Excluir(int id)
     {
