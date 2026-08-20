@@ -974,16 +974,16 @@ Tem certeza que deseja excluir este registro?
 
 ### Backend pendente
 
-- [ ] Validação completa da placa
-- [ ] Constraint única para placa
-- [ ] Constraint única VeiculoId + PlanoId
-- [ ] Tratamento completo de 409 Conflict
-- [ ] Middleware global de exceções
-- [ ] Logs com Serilog ou NLog
-- [ ] Persistência de logs em volume Docker
-- [ ] Filtros
-- [ ] Validações finais
-- [ ] Health Check
+- [x] Validação completa da placa
+- [x] Constraint única para placa
+- [x] Constraint única VeiculoId + PlanoId
+- [x] Tratamento completo de 409 Conflict
+- [x] Middleware global de exceções
+- [x] Logs com Serilog ou NLog
+- [x] Persistência de logs em volume Docker
+- [x] Filtros
+- [x] Validações finais
+- [x] Health Check
 
 ---
 
@@ -996,22 +996,22 @@ Tem certeza que deseja excluir este registro?
 
 ### Frontend pendente
 
-- [ ] Angular Material em toda a interface
-- [ ] Reactive Forms
-- [ ] Integração completa com API
-- [ ] Services para todos os endpoints
-- [ ] Interceptor HTTP
-- [ ] Snackbar / Toast
-- [ ] Tratamento de loading
-- [ ] Tratamento de lista vazia
-- [ ] Tela completa de Grupos
-- [ ] Tela completa de Veículos
-- [ ] Tela completa de Empresas
-- [ ] Tela completa de Planos
-- [ ] Tela completa de Veículos / Assistência
-- [ ] Filtros
-- [ ] Dialog de confirmação de exclusão
-- [ ] Dashboard final
+- [x] Angular Material em toda a interface
+- [x] Reactive Forms
+- [x] Integração completa com API
+- [x] Services para todos os endpoints
+- [x] Interceptor HTTP
+- [x] Snackbar / Toast
+- [x] Tratamento de loading
+- [x] Tratamento de lista vazia
+- [x] Tela completa de Grupos
+- [x] Tela completa de Veículos
+- [x] Tela completa de Empresas
+- [x] Tela completa de Planos
+- [x] Tela completa de Veículos / Assistência
+- [x] Filtros
+- [x] Dialog de confirmação de exclusão
+- [x] Dashboard final
 
 ---
 
@@ -1021,13 +1021,13 @@ Tem certeza que deseja excluir este registro?
 
 ### Docker pendente
 
-- [ ] Dockerfile da API final
-- [ ] Dockerfile do frontend
-- [ ] Docker Compose com os três serviços
-- [ ] Migrations automáticas
-- [ ] Healthcheck do SQL Server integrado à API
-- [ ] Volume persistente para logs
-- [ ] Validação do comando único em repositório limpo
+- [x] Dockerfile da API final
+- [x] Dockerfile do frontend
+- [x] Docker Compose com os três serviços
+- [x] Migrations automáticas
+- [x] Healthcheck do SQL Server integrado à API
+- [x] Volume persistente para logs
+- [x] Validação do comando único em repositório limpo
 
 ---
 
